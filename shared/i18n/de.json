@@ -1,0 +1,28 @@
+{
+  "welcome": "👋 Willkommen bei {bot_name}!\n\nNutze /subscribe um tägliche Berichte zu erhalten.",
+  "subscribed": "✅ Du erhältst jetzt tägliche Berichte.",
+  "already_subscribed": "ℹ️ Du bist bereits angemeldet.",
+  "unsubscribed": "🔕 Du wurdest abgemeldet. Nutze /subscribe um dich erneut anzumelden.",
+  "not_subscribed": "ℹ️ Du bist derzeit nicht angemeldet.",
+  "help": "📋 Verfügbare Befehle:\n{commands}",
+  "language_set": "🌐 Sprache auf Deutsch gesetzt.",
+  "no_data": "⚠️ Noch keine Daten verfügbar. Bitte später nochmal schauen.",
+
+  "signals_daily": "📊 *Täglicher Signals-Bericht — {date}*\n\n✅ Geschlossen: {closed_count} Trades | {pips_closed} Pips\n🔄 Offen: {open_count} Trades | {pips_floating} Pips schwebend\n\n📅 Diese Woche: {pips_week} Pips\n📆 Dieser Monat: {pips_month} Pips\n\n💰 Geschätzter G/V bei {lot_size} Lots: ${pnl:.2f}",
+  "lot_set": "✅ Lotgröße auf {lot_size} gesetzt.",
+  "lot_invalid": "❌ Ungültige Lotgröße. Beispiel: /setlot 0.1",
+
+  "copy_daily": "📈 *Copy-Bot Bericht — {date}*\n\n💰 Dein Kontostand: ${balance:.2f}\n📊 Heute: {return_day_pct:+.2f}%\n📅 Diese Woche: {return_week_pct:+.2f}%\n📆 Dieser Monat: {return_month_pct:+.2f}%\n📉 Drawdown: {drawdown_month:.2f}%\n\n💸 Schwebender G/V: {floating_pnl_pct:+.2f}%",
+  "copy_projection": "🔮 *12-Monats-Projektion*\n\nEinzahlung: ${deposit:.2f} | Risiko: {risk}x\n\n🐢 Konservativ: ${conservative:.2f}\n📊 Basis: ${base:.2f}\n🚀 Aggressiv: ${aggressive:.2f}",
+  "deposit_set": "✅ Einzahlung auf ${deposit:.2f} gesetzt.",
+  "deposit_invalid": "❌ Ungültiger Betrag. Beispiel: /setdeposit 5000",
+  "risk_set": "✅ Risikomultiplikator auf {risk}x gesetzt.",
+  "risk_invalid": "❌ Ungültiger Wert. Beispiel: /setrisk 1.0 (Bereich: 0.1 – 3.0)",
+
+  "funded_status": "🏆 *Funded Account Status — {date}*\n\nPhase: {phase}\nKonto: ${account_size:,.0f}\n\n📈 Aktueller Gewinn: {current_gain:.2f}% / {profit_target:.2f}% Ziel {gain_bar}\n🔴 Tagesverlust: {used_daily_loss:.2f}% / {max_daily_loss:.2f}% Limit {daily_bar}\n⚠️ Gesamtverlust: {used_overall_loss:.2f}% / {max_overall_loss:.2f}% Limit {overall_bar}",
+  "funded_no_account": "ℹ️ Kein Funded-Account mit deinem Profil verknüpft. Kontakt Support.",
+
+  "compliance_footer": "\n\n─────────────────\n⚠️ *Risikohinweis:* Der Handel beinhaltet Risiken. Vergangene Ergebnisse sind kein Indikator für zukünftige Ergebnisse. Dies ist keine Finanzberatung.",
+
+  "error_generic": "❌ Etwas ist schiefgelaufen. Bitte versuche es später erneut."
+}

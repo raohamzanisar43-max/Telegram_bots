@@ -1,0 +1,28 @@
+{
+  "welcome": "👋 Welcome to {bot_name}!\n\nUse /subscribe to receive daily reports.",
+  "subscribed": "✅ You are now subscribed to daily reports.",
+  "already_subscribed": "ℹ️ You are already subscribed.",
+  "unsubscribed": "🔕 You have been unsubscribed. Use /subscribe to reactivate.",
+  "not_subscribed": "ℹ️ You are not currently subscribed.",
+  "help": "📋 Available commands:\n{commands}",
+  "language_set": "🌐 Language set to English.",
+  "no_data": "⚠️ No data available yet. Check back later.",
+
+  "signals_daily": "📊 *Daily Signals Report — {date}*\n\n✅ Closed: {closed_count} trades | {pips_closed} pips\n🔄 Open: {open_count} trades | {pips_floating} pips floating\n\n📅 This week: {pips_week} pips\n📆 This month: {pips_month} pips\n\n💰 Est. P&L at {lot_size} lots: ${pnl:.2f}",
+  "lot_set": "✅ Lot size set to {lot_size}.",
+  "lot_invalid": "❌ Invalid lot size. Example: /setlot 0.1",
+
+  "copy_daily": "📈 *Copy Bot Report — {date}*\n\n💰 Your balance: ${balance:.2f}\n📊 Today: {return_day_pct:+.2f}%\n📅 This week: {return_week_pct:+.2f}%\n📆 This month: {return_month_pct:+.2f}%\n📉 Drawdown: {drawdown_month:.2f}%\n\n💸 Floating P&L: {floating_pnl_pct:+.2f}%",
+  "copy_projection": "🔮 *12-Month Projection*\n\nDeposit: ${deposit:.2f} | Risk: {risk}x\n\n🐢 Conservative: ${conservative:.2f}\n📊 Base: ${base:.2f}\n🚀 Aggressive: ${aggressive:.2f}",
+  "deposit_set": "✅ Deposit set to ${deposit:.2f}.",
+  "deposit_invalid": "❌ Invalid amount. Example: /setdeposit 5000",
+  "risk_set": "✅ Risk multiplier set to {risk}x.",
+  "risk_invalid": "❌ Invalid value. Example: /setrisk 1.0 (range: 0.1 – 3.0)",
+
+  "funded_status": "🏆 *Funded Account Status — {date}*\n\nPhase: {phase}\nAccount: ${account_size:,.0f}\n\n📈 Current Gain: {current_gain:.2f}% / {profit_target:.2f}% target {gain_bar}\n🔴 Daily Loss: {used_daily_loss:.2f}% / {max_daily_loss:.2f}% limit {daily_bar}\n⚠️ Overall Loss: {used_overall_loss:.2f}% / {max_overall_loss:.2f}% limit {overall_bar}",
+  "funded_no_account": "ℹ️ No funded account linked to your profile. Contact support.",
+
+  "compliance_footer": "\n\n─────────────────\n⚠️ *Risk Warning:* Trading involves risk. Past performance is not indicative of future results. This is not financial advice.",
+
+  "error_generic": "❌ Something went wrong. Please try again later."
+}

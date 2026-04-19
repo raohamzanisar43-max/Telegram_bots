@@ -1,0 +1,99 @@
+version: "3.9"
+
+services:
+
+  # ── PostgreSQL ──────────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./shared/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    ports:
+      - "127.0.0.1:5432:5432"   # localhost only
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis ───────────────────────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6379:6379"   # localhost only
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Admin API ───────────────────────────────────────────────────────────────
+  admin-api:
+    build:
+      context: .
+      dockerfile: admin/Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "127.0.0.1:4000:4000"   # localhost only — use nginx for external
+    volumes:
+      - ./logs/admin:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # ── P1 Signals Bot ──────────────────────────────────────────────────────────
+  signals-bot:
+    build:
+      context: .
+      dockerfile: signals_bot/Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./logs/signals:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # ── P2 Copy Bot ─────────────────────────────────────────────────────────────
+  copy-bot:
+    build:
+      context: .
+      dockerfile: copy_bot/Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./logs/copy:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # ── P3 Funded Bot ───────────────────────────────────────────────────────────
+  funded-bot:
+    build:
+      context: .
+      dockerfile: funded_bot/Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./logs/funded:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
