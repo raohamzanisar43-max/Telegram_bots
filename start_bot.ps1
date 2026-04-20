@@ -1,0 +1,10 @@
+$env:SIGNALS_BOT_TOKEN="8649263884:AAFPqrFae-ZaXp6M79NPKC_LlAdbKKAS_bU"
+$env:POSTGRES_HOST="localhost"
+$env:POSTGRES_PORT="5432"
+$env:POSTGRES_DB="postgres"
+$env:POSTGRES_USER="postgres"
+$env:POSTGRES_PASSWORD="admin123"
+$env:SIGNALS_VIP_CHANNEL_ID="-1000000000000"
+$env:PYTHONPATH="."
+
+python signals_bot/main.py
