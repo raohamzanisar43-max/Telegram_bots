@@ -7,6 +7,24 @@ from shared.db import get_pool
 router = APIRouter(tags=["Health"])
 
 
+@router.get("/")
+async def root():
+    """
+    Root endpoint - Welcome message for the Admin API
+    """
+    return {
+        "message": "Profitability Intelligence — Admin API",
+        "version": "1.0.0",
+        "status": "running",
+        "endpoints": {
+            "health": "/health",
+            "funded_accounts": "/funded",
+            "signals": "/signals",
+            "copy": "/copy"
+        }
+    }
+
+
 @router.get("/health")
 async def health():
     """

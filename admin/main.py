@@ -38,3 +38,8 @@ app.include_router(health_router)
 app.include_router(funded_router)
 app.include_router(signals_router)
 app.include_router(copy_router)
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=4000, log_level="info")

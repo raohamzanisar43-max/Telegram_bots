@@ -11,6 +11,19 @@ from admin.dependencies import verify_admin_secret
 router = APIRouter(prefix="/copy", tags=["Copy Bot"])
 
 
+@router.get("/")
+async def copy_root():
+    """Copy Bot endpoints overview"""
+    return {
+        "service": "Copy Bot - Master Snapshots",
+        "endpoints": {
+            "list_snapshots": "/copy/snapshots (GET)",
+            "manual_snapshot": "/copy/snapshots (POST)"
+        },
+        "note": "All endpoints require X-Admin-Secret header"
+    }
+
+
 class SnapshotOverride(BaseModel):
     return_day_pct:   Optional[float] = None
     return_week_pct:  Optional[float] = None
