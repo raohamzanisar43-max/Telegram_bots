@@ -27,7 +27,7 @@ async def post_shutdown(app: Application) -> None:
     logger.info("Copy Bot stopped")
 
 
-def main() -> None:
+async def main() -> None:
     token = os.environ["COPY_BOT_TOKEN"]
 
     app = (
@@ -51,8 +51,9 @@ def main() -> None:
     schedule_jobs(app)
 
     logger.info("Copy Bot polling...")
-    app.run_polling(drop_pending_updates=True)
+    await app.run_polling(drop_pending_updates=True)
 
 
 if __name__ == "__main__":
-    main()
+    import asyncio
+    asyncio.run(main())

@@ -1,0 +1,22 @@
+# Core Telegram Bot Framework
+python-telegram-bot[job-queue]==21.5
+
+# Database & Cache
+asyncpg==0.29.0
+redis[asyncio]==5.0.8
+
+# Web Framework & API
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Utilities
+loguru==0.7.2
+python-dotenv==1.0.1
+pydantic==2.5.0
+
+# MetaAPI for MT4 Integration (Copy Bot)
+metaapi-cloud-sdk==29.1.1
+
+# Additional Dependencies
+httpx==0.25.2
+anyio==3.7.1

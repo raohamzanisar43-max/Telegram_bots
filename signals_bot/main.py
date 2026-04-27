@@ -29,7 +29,7 @@ async def post_shutdown(app: Application) -> None:
     logger.info("Signals Bot stopped")
 
 
-def main() -> None:
+async def main() -> None:
     token = os.environ["SIGNALS_BOT_TOKEN"]
 
     app = (
@@ -50,21 +50,15 @@ def main() -> None:
     app.add_handler(CommandHandler("performance", performance))
     app.add_handler(CommandHandler("setlot",      setlot))
 
-    # Channel post listener (VIP channel)
-    channel_id = int(os.environ["SIGNALS_VIP_CHANNEL_ID"])
-    app.add_handler(
-        MessageHandler(
-            filters.Chat(channel_id) & filters.UpdateType.CHANNEL_POST,
-            channel_post_handler,
-        )
-    )
+    # Channel posts
+    app.add_handler(MessageHandler(filters.ChatType.CHANNEL & ~filters.COMMAND, channel_post_handler))
 
     # Scheduled jobs
     schedule_jobs(app)
 
     logger.info("Signals Bot polling...")
-    app.run_polling(drop_pending_updates=True)
+    await app.run_polling(drop_pending_updates=True)
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
